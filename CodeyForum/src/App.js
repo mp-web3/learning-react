@@ -1,13 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {comments} from './commentData';
-import Body from './Body'
+import Card from './Card'
+
+/* In the App component body, map over the comments array with the 
+argument named comment and return an instance of the Card component.
+For each component, give it an attribute named commentObject and 
+the value {comment}. */
 
 function App() {
   return (
     <div className="App">
-      <Body comment={comments[0].comment}/>
+      {comments.map(comment => (
+        <Card commentObject={comment} key={comment.id}/>
+      ))}
     </div>
   );
 }
