@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Video() {
+function Video({src}) {
     return (
       <div>
-        <video controls autostart autoPlay muted/>
+        <video controls autostart autoPlay muted src={src} />
       </div>
     );
 };
