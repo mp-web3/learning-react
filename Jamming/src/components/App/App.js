@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
 import SearchBar from '../SearchBar/SearchBar';
+import './App.css';
 
 function App() {
 
 	return (
-      <div>
+      <div className='App'>
         <SearchBar />
       </div>
     );

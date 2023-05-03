@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
-import Button from '../Button/Button';
+import Button from '../Button';
 
 class SearchBar extends React.Component {
   render() {

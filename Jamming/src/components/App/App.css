@@ -1,18 +1,14 @@
-img {
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  float: left;
-  margin-right: 10px;
+:root {
+  --primary-color: #1db954;
+  --gap: 1rem;
+  --padding: 1rem;
+  --margin: 1rem;
 }
 
-h1 {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 50px;
-  margin: 0;
-}
-
-p {
-  margin-left: 70px;
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
 }
