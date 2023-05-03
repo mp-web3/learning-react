@@ -15,4 +15,4 @@ class SearchResults extends React.Component {
   }
 }
 
-export const Default = () => <SearchResults />;
+export default SearchResults;
