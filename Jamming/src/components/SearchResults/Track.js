@@ -27,7 +27,7 @@ class Track extends React.Component {
                     this.props.isRemoval ?
                     <button className="Track-action" onClick={this.handleRemoveTrack}>-</button>
                     :
-                    <button className="Track-action" onCLick={this.handleAddTrack}>+</button>
+                    <button className="Track-action" onClick={this.handleAddTrack}>+</button>
                 }
                 
             </div>

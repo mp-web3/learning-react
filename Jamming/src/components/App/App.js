@@ -39,8 +39,19 @@ function App() {
 	return (
       <div className='App'>
         < SearchBar />
-        <div>
-          < SearchResults searchResults={testTracks} />
+        <div className='App-playlist'>
+          < SearchResults 
+          searchResults={testTracks} 
+          onAdd={addTrack}
+          onRemoval={false}
+          />
+
+          <Playlist
+          playlistName={playlistName}
+          playlistTracks={playlistTracks}
+          onRemove={removeTrack}
+          onNameChange={updatePlaylistName}
+          />
         </div>
       </div>
     );
