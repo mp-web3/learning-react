@@ -36,12 +36,25 @@ function App() {
     setPlaylistName(name);
   }
 
+  const [searchResults, setSearchResults] = useState([]);
+
+  const search = (term) => {
+    const results = testTracks.filter((track) => {
+      return track.name.toLowerCase().includes(term.toLowerCase())
+             || track.artist.toLowerCase().includes(term.toLowerCase())
+             || track.album.toLowerCase().includes(term.toLowerCase())
+    });
+    setSearchResults(results);
+  }
+
 	return (
       <div className='App'>
-        < SearchBar />
+        < SearchBar 
+        onSearch={search}
+        />
         <div className='App-playlist'>
           < SearchResults 
-          searchResults={testTracks} 
+          searchResults={searchResults} 
           onAdd={addTrack}
           onRemoval={false}
           />
