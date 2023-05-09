@@ -4,6 +4,7 @@ import './App.css';
 import SearchResults from '../SearchResults';
 import Playlist from '../Playlist';
 import testTracks from '../../testData';
+import Spotify from '../../util/Spotify';
 
 function App() {
   // playlistName and setPlaylistName are a pair of state variables created using useState().
@@ -38,13 +39,22 @@ function App() {
 
   const [searchResults, setSearchResults] = useState([]);
 
+  /*
   const search = (term) => {
     const results = testTracks.filter((track) => {
       return track.name.toLowerCase().includes(term.toLowerCase())
              || track.artist.toLowerCase().includes(term.toLowerCase())
              || track.album.toLowerCase().includes(term.toLowerCase())
-    });
+    }); 
+    
     setSearchResults(results);
+  }
+  */
+
+  const search = (term) => {
+    Spotify.search(term).then((result) => {
+      this.setState({ searchResults: result });
+    });
   }
 
 	return (
