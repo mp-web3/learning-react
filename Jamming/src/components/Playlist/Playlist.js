@@ -10,7 +10,7 @@ class Playlist extends React.Component {
         return (
             <div className='Playlist'>
                 <input defaultValue={'New Playlist'} />
-                <button className="Playlist-save" onCLick={onSave}>Save Playlist</button>
+                <button className="Playlist-save" onClick={onSave}>Save Playlist</button>
 
                 <TrackList 
                 tracks={playlistTracks}
