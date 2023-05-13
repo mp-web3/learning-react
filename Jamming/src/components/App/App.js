@@ -3,7 +3,6 @@ import SearchBar from '../SearchBar/SearchBar';
 import './App.css';
 import SearchResults from '../SearchResults';
 import Playlist from '../Playlist';
-import testTracks from '../../testData';
 import Spotify from '../../util/Spotify';
 
 function App() {
@@ -52,9 +51,13 @@ function App() {
   */
 
   const search = (term) => {
-    Spotify.search(term).then((result) => {
-      setSearchResults(searchResults);
-    });
+    Spotify.search(term)
+      .then((result) => {
+        setSearchResults(result);
+      })
+      .catch((error) => {
+        console.error("Error fetching search results:", error);
+      });
   }
 
 	return (
