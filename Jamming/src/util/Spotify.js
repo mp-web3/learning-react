@@ -5,6 +5,9 @@ const clientID = '1a4ea45a5e734a3f9753c2ea1c4c4ffc'; // My Spotify app's client 
 const redirectURI = 'http://localhost:3000/'; // The redirect URI of my Spotify spp
 
 const Spotify = {
+
+    userID: null,
+
     getAccessToken() { //Get an access token for making requests to the Spotify API
         if (accessToken && !this.isTokenExpired()) { //Check if an access token is already available amd not expired
             return accessToken;
@@ -73,27 +76,62 @@ const Spotify = {
 
     async getUserData() {
         const accessToken = this.getAccessToken();
-    
+        
         if (!accessToken) {
-            console.error("No access token set");
-            return;
+          return;
         }
-    
+      
         try {
-            const response = await fetch(`https://api.spotify.com/v1/me`, {
-                headers: { Authorization: `Bearer ${accessToken}` },
-            });
-    
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-    
-            const jsonResponse = await response.json();
-            console.log(jsonResponse); // Log the user's data into the console
+          const response = await fetch('https://api.spotify.com/v1/me', {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          });
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          const data = await response.json();
+          return data;
         } catch (error) {
-            console.error('There has been a problem with your fetch operation:', error);
+          console.error('There has been a problem with your fetch operation:', error);
         }
     },
+
+    async savePlaylist(name, trackURIs) {
+        if (!name || !trackURIs.length) {
+          return;
+        }
+      
+        if (!this.userID) {
+          const userResponse = await this.getUserData();
+          console.log(userResponse); // Add this line to debug
+          this.userID = userResponse.id;
+        }
+      
+        const headers = { Authorization: `Bearer ${accessToken}` };
+        let playlistResponse;
+        try {
+          // POST request to Spotify API to create a new playlist
+          playlistResponse = await fetch(`https://api.spotify.com/v1/users/${this.userID}/playlists`, {
+            headers: headers,
+            method: 'POST',
+            body: JSON.stringify({ name: name }),
+          });
+        } catch (error) {
+          console.error('There has been a problem with your fetch operation:', error);
+          return;
+        }
+      
+        const playlistJsonResponse = await playlistResponse.json();
+        const playlistID = playlistJsonResponse.id;
+      
+        // POST request to Spotify API to add tracks to the new playlist
+        await fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, {
+          headers: headers,
+          method: 'POST',
+          body: JSON.stringify({ uris: trackURIs }),
+        });
+    }
 
 }
 

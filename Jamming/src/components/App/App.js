@@ -58,6 +58,14 @@ function App() {
     }
   }, [hasSearched]); // This effect runs whenever hasSearched changes
 
+  const savePlaylist = () => {
+    const trackURIs = playlistTracks.map(track => track.uri);
+    Spotify.savePlaylist(playlistName, trackURIs).then(() => {
+      setPlaylistName('New Playlist');
+      setPlaylistTracks([]);
+    });
+  }
+
 	return (
       <div className='App'>
         < SearchBar 
@@ -75,6 +83,7 @@ function App() {
           playlistTracks={playlistTracks}
           onRemove={removeTrack}
           onNameChange={updatePlaylistName}
+          onSave={savePlaylist}
           />
         </div>
       </div>
