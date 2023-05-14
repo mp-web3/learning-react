@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useEffect
 import SearchBar from '../SearchBar/SearchBar';
 import './App.css';
 import SearchResults from '../SearchResults';
@@ -6,6 +6,7 @@ import Playlist from '../Playlist';
 import Spotify from '../../util/Spotify';
 
 function App() {
+
   // playlistName and setPlaylistName are a pair of state variables created using useState().
   // playlistName is the current state value, and setPlaylistName is the function to update it.
   // 'My Playlist' is the initial state value.
@@ -38,27 +39,24 @@ function App() {
 
   const [searchResults, setSearchResults] = useState([]);
 
-  /*
-  const search = (term) => {
-    const results = testTracks.filter((track) => {
-      return track.name.toLowerCase().includes(term.toLowerCase())
-             || track.artist.toLowerCase().includes(term.toLowerCase())
-             || track.album.toLowerCase().includes(term.toLowerCase())
-    }); 
-    
-    setSearchResults(results);
-  }
-  */
+  const [hasSearched, setHasSearched] = useState(false);
 
   const search = (term) => {
     Spotify.search(term)
-      .then((result) => {
-        setSearchResults(result);
-      })
-      .catch((error) => {
-        console.error("Error fetching search results:", error);
-      });
+        .then((result) => {
+            setSearchResults(result);
+            setHasSearched(true); // Set hasSearched to true after a search is made
+        })
+        .catch((error) => {
+            console.error("Error fetching search results:", error);
+        });
   }
+
+  useEffect(() => {
+    if (hasSearched) { // Only call getUserData after a search has been made
+        Spotify.getUserData();
+    }
+  }, [hasSearched]); // This effect runs whenever hasSearched changes
 
 	return (
       <div className='App'>

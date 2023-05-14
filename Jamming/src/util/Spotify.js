@@ -70,6 +70,31 @@ const Spotify = {
             console.error('There has been a problem with your fetch operation:', error);
         }
     },
+
+    async getUserData() {
+        const accessToken = this.getAccessToken();
+    
+        if (!accessToken) {
+            console.error("No access token set");
+            return;
+        }
+    
+        try {
+            const response = await fetch(`https://api.spotify.com/v1/me`, {
+                headers: { Authorization: `Bearer ${accessToken}` },
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const jsonResponse = await response.json();
+            console.log(jsonResponse); // Log the user's data into the console
+        } catch (error) {
+            console.error('There has been a problem with your fetch operation:', error);
+        }
+    },
+
 }
 
 export default Spotify;
