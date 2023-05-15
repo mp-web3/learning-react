@@ -1,8 +1,28 @@
 :root {
-  --primary-color: #1db954;
+  --primary-color: #FDA707;
+  --secondary-color: #098A5A;
+  --tertiary-color: #D2D4FF;
+  --text-color: #000000;
+  --border-color: #000000;
   --gap: 1rem;
   --padding: 1rem;
   --margin: 1rem;
+  --button-border-radius: 1rem;
+  --family: 'Raleway', sans-serif;
+  --p-size: 16px;
+}
+
+h1, h2, h3, h4 {
+  padding: 0;
+  margin: 0;
+  font-family: var(--family)
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--tertiary-color);
+  font-size: var(--p-size);
 }
 
 .App {
@@ -10,11 +30,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: auto;
+
 }
 
 .App-playlist {
   display: flex;
   align-items:flex-start;
+  width: 50%;
   margin: calc(var(--margin)*3);
   padding: var(--padding);
   gap: calc(var(--gap)*6);

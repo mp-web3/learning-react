@@ -1,0 +1,33 @@
+.TrackList {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--gap)*2);
+}
+
+.Track {
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    padding-bottom: var(--padding);
+    border-radius: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+
+.Track-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    line-height: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: none;
+    border-radius: 50%;
+    font-size: var(--p-size);
+    text-align: center;
+}
+

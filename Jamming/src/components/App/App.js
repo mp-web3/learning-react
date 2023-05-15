@@ -72,7 +72,7 @@ function App() {
         onSearch={search}
         />
         <div className='App-playlist'>
-          < SearchResults 
+          < SearchResults
           searchResults={searchResults} 
           onAdd={addTrack}
           onRemoval={false}
