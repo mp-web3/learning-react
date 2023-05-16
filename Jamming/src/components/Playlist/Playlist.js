@@ -9,8 +9,10 @@ function Playlist({ playlistName, playlistTracks, onRemove, onNameChange, onSave
 
   return (
     <div className="Playlist">
-      <input value={playlistName} onChange={handleNameChange} />
-      <button className="Playlist-save" onClick={onSave}>Save to Spotify</button>
+      <div className='PlaylistNameButton-container'>
+        <input value={playlistName} onChange={handleNameChange} />
+        <button className="Playlist-save" onClick={onSave}>Save to Spotify</button>
+      </div>
       <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
     </div>
   );

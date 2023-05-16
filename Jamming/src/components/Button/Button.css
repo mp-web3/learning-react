@@ -3,8 +3,8 @@ button {
     border-radius: var(--button-border-radius);
     border: none;
     cursor: pointer;
-    padding: 10px;
     text-decoration: none;
     font-family: var(--family);
     font-weight: 500;
+    padding: 10px;
 }

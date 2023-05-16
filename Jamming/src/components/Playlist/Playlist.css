@@ -7,6 +7,18 @@
     box-shadow: var(--box-shadow-light);
 }
 
+.PlaylistNameButton-container {
+    display: inline-block;
+    justify-content: space-between;
+}
+
 .Playlist input {
     margin-top: 0;
+    margin-right: calc(var(--margin)*3);
 }
+
+/*
+.Playlist-save {
+
+}
+*/
