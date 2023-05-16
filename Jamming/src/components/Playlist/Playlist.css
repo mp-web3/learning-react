@@ -1,0 +1,12 @@
+.Playlist {
+    border: var(--border-def);
+    min-height: 50vh;
+    width: 50%;
+    padding: var(--padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow-light);
+}
+
+.Playlist input {
+    margin-top: 0;
+}

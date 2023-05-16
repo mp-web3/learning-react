@@ -3,10 +3,13 @@
   --secondary-color: #098A5A;
   --tertiary-color: #D2D4FF;
   --text-color: #000000;
-  --border-color: #000000;
+  --border-color: #00000044;
+  --border-def: 1px solid var(--border-color);
   --gap: 1rem;
   --padding: 1rem;
   --margin: 1rem;
+  --card-border-radius: 0.25rem;
+  --box-shadow-light: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   --button-border-radius: 1rem;
   --family: 'Raleway', sans-serif;
   --p-size: 16px;
@@ -25,6 +28,14 @@ body {
   font-size: var(--p-size);
 }
 
+input {
+  padding: 10px;
+  border: none;
+  border-radius: var(--card-border-radius);
+  margin-bottom: var(--margin);
+  margin-top: calc(var(--margin)*3);
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -38,11 +49,20 @@ body {
 .App-playlist {
   display: flex;
   align-items:flex-start;
-  width: 50%;
-  margin: calc(var(--margin)*3);
-  padding: var(--padding);
-  gap: calc(var(--gap)*6);
-  border: 1px solid black;
-  border-radius: 0.25rem;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  width: 70%;
+  margin-top: calc(var(--margin)*3);
+  padding: 0;
+  gap: calc(var(--gap)*3);
 }
+
+
+@media(max-width:768px) {
+  .App-playlist {
+    flex-wrap: wrap;
+  }
+
+}
+
+
+
+

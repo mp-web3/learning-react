@@ -1,3 +1,11 @@
+.SearchResults {
+    border: var(--border-def);
+    min-height: 50vh;
+    width: 50%;
+    padding: var(--padding);
+}
+
+
 .TrackList {
     display: flex;
     flex-direction: column;
